@@ -54,7 +54,7 @@ class MledozeCountriesJson implements DataSourceInterface
             $country->areaInKilometres = $countryDataItem->area;
 
             $country->key = [$country->name, $country->officialName];
-            foreach ($countryDataItem->native as $native) {
+            foreach ($countryDataItem->name->native as $native) {
                 $country->key[] = $native->common;
                 $country->key[] = $native->official;
             }
