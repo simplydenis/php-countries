@@ -53,6 +53,12 @@ class MledozeCountriesJson implements DataSourceInterface
             $country->longitude = isset($countryDataItem->latlng[1]) ? $countryDataItem->latlng[1] : null;
             $country->areaInKilometres = $countryDataItem->area;
 
+            $country->key = [$country->name, $country->officialName];
+            foreach ($countryDataItem->native as $native) {
+                $country->key[] = $native->common;
+                $country->key[] = $native->official;
+            }
+
             $countries[] = $country;
         }
 

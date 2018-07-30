@@ -33,7 +33,7 @@ class Countries
     public function getByName(string $name)
     {
         foreach ($this->all() as $country) {
-            if ($country->name == $name || $country->officialName == $name) {
+            if (\in_array($name, $country->key, false)) {
                 return $country;
             }
         }
